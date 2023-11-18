@@ -38,6 +38,18 @@ def insert_fake_user():
         )
     )
     conn.commit()
+    last_id = cur.lastrowid
+
+    response = {
+        'response': {
+            'status': 'successful' ,
+            'response': {
+            'id': last_id ,
+            'name': nome
+            }
+        }
+    }
+    return response
 
     conn.close()
 

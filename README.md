@@ -27,3 +27,10 @@ A Simple project with Python, Flask, SQLite ...
 
     `python3 main.py`
 
+
+
+## To test API
+
+[Insomnia](https://insomnia.rest/download)
+[Postman](https://www.postman.com/)
+[reqbin](https://reqbin.com/)
