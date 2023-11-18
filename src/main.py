@@ -54,6 +54,15 @@ def all_users():
     return jsonify(response)
 
 
+@app.route('/user/<user_id>', methods=['GET'])
+def user_by_id(user_id):
+
+    user = User()
+    response = user.get_by_id(user_id)
+    return jsonify(response)
+
+
+
 ## Update
 
 

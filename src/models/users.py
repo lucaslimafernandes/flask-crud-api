@@ -3,6 +3,7 @@ import sqlite3
 db_path = './database.db'
 
 conn = sqlite3.connect(db_path, check_same_thread=False)
+# conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
 
@@ -16,11 +17,70 @@ class User:
     def get_all(self):
 
         sql = """
-            select * from user;
+            select 
+                u.id ,
+                u.nome ,
+                u.email ,
+                u.sexo ,
+                u.data_nascimento ,
+                u.profissao , 
+                u.endereco
+            from user u
+            ;
         """
         cur.execute(sql)
+        
+        res = []
+        for i in cur.fetchall():
+            res.append(
+                {
+                    'id':               i[0] ,
+                    'nome':             i[1] ,
+                    'email':            i[2] ,
+                    'sexo':             i[3] ,
+                    'data_nascimento':  i[4] ,
+                    'profissao':        i[5] ,
+                    'endereco':         i[6] ,
+                }
+            )
 
-        return cur.fetchall()
+        return res
+    
+
+    def get_by_id(self, _id):
+
+        sql = """
+            select 
+                u.id ,
+                u.nome ,
+                u.email ,
+                u.sexo ,
+                u.data_nascimento ,
+                u.profissao , 
+                u.endereco
+            from
+                user u
+            where
+                u.id = ?
+            ;
+        """
+        cur.execute(sql, (_id,))
+        
+        res = []
+        for i in cur.fetchall():
+            res.append(
+                {
+                    'id':               i[0] ,
+                    'nome':             i[1] ,
+                    'email':            i[2] ,
+                    'sexo':             i[3] ,
+                    'data_nascimento':  i[4] ,
+                    'profissao':        i[5] ,
+                    'endereco':         i[6] ,
+                }
+            )
+
+        return res
 
 
     def insert_user(self, **kwargs):
