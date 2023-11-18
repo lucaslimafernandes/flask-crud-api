@@ -43,9 +43,9 @@ def insert_fake_user():
     response = {
         'response': {
             'status': 'successful' ,
-            'response': {
-            'id': last_id ,
-            'name': nome
+            'user': {
+                'id': last_id ,
+                'name': nome
             }
         }
     }

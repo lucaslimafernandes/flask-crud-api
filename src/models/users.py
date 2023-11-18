@@ -67,9 +67,9 @@ class User:
         response = {
             'response': {
                 'status': 'successful' ,
-                'response': {
-                'id': last_id ,
-                'name': kwargs['nome']
+                'user': {
+                    'id': last_id ,
+                    'name': kwargs['nome']
                 }
             }
         }
