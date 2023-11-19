@@ -49,19 +49,17 @@ def insert_fake_user():
             }
         }
     }
-    return response
-
     conn.close()
 
-
-
-
-
-
-
-
+    return response
 
 
 if __name__ == '__main__':
 
-    insert_fake_user()
+    # para executar, deve estar na pasta src
+    # e chamar a execução python
+    # python3 models/fake_data.py
+
+    response = insert_fake_user()
+    print(response)
+    

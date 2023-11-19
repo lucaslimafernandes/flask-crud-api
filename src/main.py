@@ -97,3 +97,21 @@ def delete_user(user_id):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
+
+
+#       from flask import Flask
+#   from flask_apispec import FlaskApiSpec
+
+#   app = Flask(__name__)
+#   docs = FlaskApiSpec(app)
+
+#   @app.route('/hello')
+#   def hello():
+#       """Hello World"""
+#       return {'hello': 'world'}
+
+#   docs.register(hello)
+
+#   if __name__ == '__main__':
+#       app.run(debug=True)

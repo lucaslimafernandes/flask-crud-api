@@ -34,4 +34,10 @@ def create_db():
 
 
 if __name__ == '__main__':
+    
+    # para executar, deve estar na pasta src
+    # e chamar a execução python
+    # python3 models/create_db.py
+
     create_db()
+
