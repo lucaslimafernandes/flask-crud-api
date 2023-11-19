@@ -1,0 +1,14 @@
+[Unit]
+Description=Flask CRUD API
+After=network.target
+
+[Service]
+WorkingDirectory=/home/ubuntu/flask-crud-api/src
+ExecStart=/bin/bash -c 'source /home/ubuntu/flask-crud-api/venv/bin/activate && gunicorn --chdir /home/lucas/flask-crud-api/src --bind 0.0.0.0:5001 main:app'
+Restart=always
+User=lucas
+Group=lucas
+Environment="PATH=/home/ubuntu/flask-crud-api/venv/bin"
+
+[Install]
+WantedBy=multi-user.target

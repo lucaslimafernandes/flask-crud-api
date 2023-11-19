@@ -38,12 +38,24 @@ A Simple project with Python, Flask, SQLite ...
     `python3 main.py`
 
 
-
-## Tests with pytest
-
+## Tests
 
 
-## To test API
+### Tests with pytest
+
+After main script are running
+
+1. run the online_route test
+
+    `pytest tests/online_route.py`
+
+2. run the test about API
+
+    `pytest tests/user_api.py`
+
+
+
+### To test API
 
 I prefer the software Insomnia to call API's, but, exists another solutions
 
@@ -80,6 +92,16 @@ curl --request GET \
     - ('/user/<user_id>/delete', methods=['DELETE']): Delete user
 
 
+Other way to visualize the routes, after the main is running,
+
+access the 'http://localhost:5001/swagger/' 
+
+or 'http://localhost:5001/swagger-ui/'
+
+You can test the API's with the Swagger UI too.
+
+
+
 ### cURL
 
     This cURL genereted by Insomnia
@@ -109,11 +131,18 @@ curl --request POST \
   --form nome=Lucas \
   --form email=teste@email \
   --form sexo=M \
-  --form data_nascimento=1993-02-07 \
+  --form data_nascimento=2000-01-01 \
   --form profissao=na \
   --form endereco=na
 
 curl --request POST \
   --url http://localhost:5001/user/fake_insert \
   --header 'Content-Type: multipart/form-data'
+
+
+
+## Running in a Cloud (GCP, AWS, Azure, OCI, Others)
+
+
+
 

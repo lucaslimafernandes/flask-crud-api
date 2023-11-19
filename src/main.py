@@ -1,11 +1,17 @@
 from flask import Flask
 from flask import jsonify, request
+from flask_apispec import FlaskApiSpec
 
 from models.users import User
 from models.fake_data import insert_fake_user
 
 app = Flask(__name__)
+docs = FlaskApiSpec(app)
 
+@app.route('/', methods=['GET'])
+def index():
+    response = {"response": "Hello, World!"}
+    return jsonify(response)
 
 
 ## Create
@@ -39,10 +45,6 @@ def insert_fake():
 
 
 ## Read
-@app.route('/', methods=['GET'])
-def index():
-    response = {"response": "Hello, World!"}
-    return jsonify(response)
 
 
 @app.route('/user/all', methods=['GET'])
@@ -94,24 +96,17 @@ def delete_user(user_id):
     return jsonify(response)
 
 
+# flask_apispec
+docs.register(index)
+docs.register(insert_fake)
+docs.register(insert_user)
+docs.register(all_users)
+docs.register(user_by_id)
+docs.register(update_user)
+docs.register(delete_user)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
 
 
-
-#       from flask import Flask
-#   from flask_apispec import FlaskApiSpec
-
-#   app = Flask(__name__)
-#   docs = FlaskApiSpec(app)
-
-#   @app.route('/hello')
-#   def hello():
-#       """Hello World"""
-#       return {'hello': 'world'}
-
-#   docs.register(hello)
-
-#   if __name__ == '__main__':
-#       app.run(debug=True)

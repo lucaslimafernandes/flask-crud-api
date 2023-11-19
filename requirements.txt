@@ -2,3 +2,6 @@ flask
 pytest
 faker
 requests
+gunicorn
+flask_apispec
+
