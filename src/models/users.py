@@ -126,10 +126,72 @@ class User:
 
         response = {
             'response': {
+                'operation': 'insert' ,
                 'status': 'successful' ,
                 'user': {
                     'id': last_id ,
                     'name': kwargs['nome']
+                }
+            }
+        }
+        return response
+    
+
+    def update_user(self, _id, data:dict):
+        
+        expr = ''
+        cont = 0
+        len_data = len(data)
+        for key, value in data.items():
+            cont += 1
+
+            if cont < len_data:
+                expr = expr + f'{key} = "{value}" , '
+            else:
+                expr = expr + f'{key} = "{value}"'
+
+
+        sql = f"""
+            update user
+            set {expr} 
+            where id = ?
+            ;
+        """
+
+        cur.execute(sql, (_id,))
+        conn.commit()
+        last_id = cur.lastrowid
+
+        response = {
+            'response': {
+                'operation': 'update' ,
+                'status': 'successful' ,
+                'user': {
+                    'id': last_id ,
+                    'items': expr
+                }
+            }
+        }
+        return response
+    
+
+    def delete_user(self, _id):
+
+        sql = """
+            delete from user
+            where id = ?
+            ;
+        """
+
+        cur.execute(sql, (_id,))
+        conn.commit()
+
+        response = {
+            'response': {
+                'operation': 'delete' ,
+                'status': 'successful' ,
+                'user': {
+                    'id': _id ,
                 }
             }
         }

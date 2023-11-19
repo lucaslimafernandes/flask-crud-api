@@ -62,11 +62,36 @@ def user_by_id(user_id):
     return jsonify(response)
 
 
-
 ## Update
+@app.route('/user/<user_id>/update', methods=['PUT'])
+def update_user(user_id):
+
+    kw_accepted = ['nome', 'email', 'sexo', 'data_nascimento', 'profissao', 'endereco']
+    f = request.form
+    keys_list = [x for x in f.keys()]
+
+    for k in keys_list:
+        if k not in kw_accepted:
+
+            response =  {
+                'response': 'some key is not accepted!'
+            }
+            return jsonify(response)
+
+    user = User()
+    response = user.update_user(user_id, data=f)
+
+    return jsonify(response)
 
 
 ## Delete
+@app.route('/user/<user_id>/delete', methods=['DELETE'])
+def delete_user(user_id):
+
+    user = User()
+    response = user.delete_user(user_id)
+
+    return jsonify(response)
 
 
 
