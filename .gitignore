@@ -1,5 +1,7 @@
 # Project ignore
 *.db
+flask_service_home.service
+nohup.out
 
 
 

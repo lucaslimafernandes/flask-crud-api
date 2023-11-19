@@ -45,8 +45,6 @@ def insert_fake():
 
 
 ## Read
-
-
 @app.route('/user/all', methods=['GET'])
 def all_users():
 
