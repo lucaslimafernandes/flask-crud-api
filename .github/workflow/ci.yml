@@ -1,4 +1,4 @@
-name: flas_crud_api
+name: flask_crud_api
 on:
   push:
     branches:
