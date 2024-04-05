@@ -146,4 +146,15 @@ curl --request POST \
 
 
 
+## Github actions
+
+Dentro do server /home/flask/.ssh
+ssh-keygen -m PEM -t rsa -b 4096 -C "lucaslimafernandes@github"
+
+salvei como github-actions
+
+cat github-actions.pub >> authorized_keys
+
+
+
 
