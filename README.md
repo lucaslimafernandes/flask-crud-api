@@ -3,6 +3,7 @@ A Simple project with Python, Flask, SQLite ...
 
 
 
+
 ## How to run
 
 1. Create a Virtual Environment
